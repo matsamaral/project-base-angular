@@ -1,0 +1,33 @@
+<div class="login">
+
+  <mat-card class="card-login" [@animacao-painel]="estadoPainel">
+    <form [formGroup]="loginForm" #form="ngForm" (ngSubmit)="entrar()" class="login-form">
+
+      <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="exemplo@exemplo.com" formControlName="email">
+        <mat-error *ngIf="loginForm.controls.email.hasError('required')">
+          E-mail é obrigatório!
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls.email.hasError('email')">
+          E-mail esta inválido!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Senha</mat-label>
+        <input matInput placeholder="Informe sua senha" formControlName="senha">
+        <mat-error *ngIf="loginForm.controls.senha.hasError('required')">
+          Senha é obrigatória!
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls.senha.hasError('minlength')">
+          Senha deve ter no mínimo 6 caracteres!
+        </mat-error>
+      </mat-form-field>
+
+    </form>
+
+    <button mat-raised-button color="primary" (click)="form.ngSubmit.emit()"> Entrar </button>
+  </mat-card>
+
+</div>

@@ -1,0 +1,10 @@
+.header-information,
+.menu-title,
+.header-action {
+  display: flex;
+  align-items: center;
+}
+
+.header-information {
+  justify-content: space-between;
+}
