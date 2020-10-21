@@ -1,0 +1,32 @@
+<div class="page-list">
+
+  <div class="informations">
+    <h1 class="title-page">Tarefas</h1>
+    <button mat-raised-button color="primary" (click)="openModal()">Cadastrar</button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef> Descrição </th>
+      <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="concluida">
+      <th mat-header-cell *matHeaderCellDef> Concluída </th>
+      <td mat-cell *matCellDef="let element"> {{element.concluida ? 'Concluída' : 'Não Concluída'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef> Ações </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button (click)="openModal(element.id)"> Editar </button>
+        <button class="ml-8" mat-raised-button color="warn" (click)="excluir(element.id)"> Deletar </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+  </table>
+
+</div>

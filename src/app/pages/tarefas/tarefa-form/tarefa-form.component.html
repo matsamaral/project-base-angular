@@ -1,0 +1,37 @@
+<div>
+
+  <div class="title">
+    <h2>{{id ? 'Editar Tarefa' : 'Cadastrar Tarefa'}}</h2>
+  </div>
+
+  <div class="form">
+
+    <form [formGroup]="tarefaForm" #form="ngForm" (ngSubmit)="salvar()" class="tarefa-form">
+
+      <mat-form-field>
+        <mat-label>Descrição</mat-label>
+        <input matInput formControlName="descricao" placeholder="Descrição" maxlength="50">
+        <mat-error *ngIf="tarefaForm.controls.descricao.hasError('required')">
+          Descrição é obrigatório!
+        </mat-error>
+        <mat-error *ngIf="tarefaForm.controls.descricao.hasError('maxlength')">
+          Descrição deve conter no máximo 50 caracteres!
+        </mat-error>
+        <mat-error *ngIf="tarefaForm.controls.descricao.hasError('minlength')">
+          Descrição deve conter no mínimo 2 caracteres!
+        </mat-error>
+      </mat-form-field>
+
+      <div class="checkbox">
+        <mat-checkbox color="primary" formControlName="concluida"> Concluída </mat-checkbox>
+      </div>
+    </form>
+
+    <div class="button-group">
+      <button mat-raised-button color="primary" (click)="form.ngSubmit.emit()">Salvar</button>
+      <button mat-raised-button (click)="close()">Cancelar</button>
+    </div>
+
+  </div>
+
+</div>
